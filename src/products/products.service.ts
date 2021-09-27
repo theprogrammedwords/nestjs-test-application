@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Product } from './products.model';
 @Injectable()
 export class ProductsService {
-  products: Product[] = [];
+  private products: Product[] = [];
 
   insertProduct(title: string, description: string, price: number) {
     const prodId = new Date().toString();
@@ -11,5 +11,9 @@ export class ProductsService {
     this.products.push(newProduct);
 
     return prodId;
+  }
+
+  getProducts() {
+    return this.products;
   }
 }
